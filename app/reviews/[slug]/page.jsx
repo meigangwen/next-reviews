@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Heading from "@/components/Heading";
 import ShareButtons from "@/components/ShareButtons";
 import { getReview, getSlugs } from '@/lib/reviews';
@@ -23,7 +24,7 @@ export default async function ReviewPage({params:{slug}}) {
                 <p className="italic pb-2">{review.date}</p>
                 <ShareButtons /> 
             </div>
-            <img src={review.image} alt="" width="640" height="360" className="mb-2 rounded" />
+            <Image src={review.image} alt="" priority width="640" height="360" className="mb-2 rounded" />
             <article dangerouslySetInnerHTML={{ __html: review.body }} 
                 className = "max-w-screen-sm prose prose-slate" 
             />
