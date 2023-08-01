@@ -3,6 +3,7 @@ import Image from "next/image";
 import Heading from "@/components/Heading";
 import { getReviews } from '@/lib/reviews';
 
+//export const revalidate = 30; // seconds
 
 export const metadata = {
     title: "Indie Gamer",
@@ -11,7 +12,8 @@ export const metadata = {
 export default async function HomePage() {
 
     // TODO load featured review
-    const reviews = await getReviews(3);
+    const { reviews } = await getReviews(3);
+    console.log('[Homepage] rendering:', reviews.map((review) => review.slug).join(', '));
     return (
         <div>
             <Heading>Indie Gamer</Heading>
